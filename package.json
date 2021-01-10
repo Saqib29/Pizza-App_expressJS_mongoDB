@@ -1,0 +1,35 @@
+{
+  "name": "pizza-app_expressjs_mongodb",
+  "version": "1.0.0",
+  "description": "realtime pizza app",
+  "main": "app.js",
+  "scripts": {
+    "serve": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saqib29/Pizza-App_expressJS_mongoDB.git"
+  },
+  "keywords": [
+    "nodeJS",
+    "expressJS",
+    "mongoDB",
+    "ejs",
+    "websocket"
+  ],
+  "author": "Saqib Aminul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Saqib29/Pizza-App_expressJS_mongoDB/issues"
+  },
+  "homepage": "https://github.com/Saqib29/Pizza-App_expressJS_mongoDB#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
