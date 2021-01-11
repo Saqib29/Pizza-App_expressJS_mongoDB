@@ -3,19 +3,26 @@
 body{
     font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
-    color: $dark;
+    background-color: $dark;
+    color: $secondary;
 }
 
 nav li:last-child a{
-    background: $pure-dark;
+    // background: $pure-dark;
     &:hover {
         background: $primary-hover;
     }
 }
 
+
 nav li a{
     transition: $smooth;
+    
     &:hover{
         color: $primary;
     }
+}
+
+section.hero {
+    background: $pure-dark;
 }
