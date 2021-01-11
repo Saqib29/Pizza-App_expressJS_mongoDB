@@ -1,3 +1,19 @@
 body {
-  background: red;
+  font-family: "Lato", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #232323;
+}
+
+nav li:last-child a {
+  background: #121212;
+}
+nav li:last-child a:hover {
+  background: #a02f02;
+}
+
+nav li a {
+  transition: all 0.1s ease-in-out;
+}
+nav li a:hover {
+  color: #FE5F1E;
 }
