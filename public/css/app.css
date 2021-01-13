@@ -40,3 +40,6 @@ section.hero {
 section.cart {
   background: #232323;
 }
+section.cart .amount {
+  color: #FE5F1E;
+}
