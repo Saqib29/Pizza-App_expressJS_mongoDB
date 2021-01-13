@@ -16,7 +16,7 @@ nav li:last-child a:hover {
 }
 
 nav li a {
-  transition: all 0.1s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 nav li a:hover {
   color: #FE5F1E;
@@ -29,10 +29,14 @@ section.hero {
 .add-to-cart {
   border: 2px solid #FE5F1E;
   color: #FE5F1E;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .add-to-cart:hover {
   background: #FE5F1E;
   border-color: #121212;
   color: #121212;
+}
+
+section.cart {
+  background: #232323;
 }
