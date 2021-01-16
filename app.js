@@ -6,6 +6,7 @@ const ejs               = require('ejs');
 const expressLayout     = require('express-ejs-layouts');
 const mongoose          = require('mongoose');
 const session           = require('express-session');
+const flash             = require('express-flash');
 
 
 const PORT = process.env.PORT || 3000;
@@ -22,6 +23,7 @@ connection.once('open', () => {
     console.log('connection failed');
 });
 
+// Middlewares
 
 // Assets
 app.use(express.static('public'));
@@ -34,6 +36,7 @@ app.use(session({
     cookie: { maxAge: 100 * 60 * 60 * 24 }
 }));
 
+app.use(flash()); 
 
 // set Template engine
 app.use(expressLayout);
