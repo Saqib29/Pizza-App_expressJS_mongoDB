@@ -17,6 +17,7 @@ app.use(expressLayout);
 app.set('views', path.join(__dirname, '/resources/views'));
 app.set('view engine', 'ejs');
 
+// fatching web routes
 require('./routes/web')(app);
 
 app.listen(PORT, () => {
