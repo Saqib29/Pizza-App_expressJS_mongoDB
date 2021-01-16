@@ -9,7 +9,9 @@ const mongoose          = require('mongoose');
 const PORT = process.env.PORT || 3000;
 
 // Database connection
-const url = 'mongodb://localhost/pizza';
+const url = 'mongodb://localhost:27017/pizza';
+// 
+
 mongoose.connect(url, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: true });
 const connection = mongoose.connection;
 connection.once('open', () => {
