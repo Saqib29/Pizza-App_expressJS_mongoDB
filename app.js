@@ -7,6 +7,8 @@ const expressLayout     = require('express-ejs-layouts');
 const mongoose          = require('mongoose');
 const session           = require('express-session');
 const flash             = require('express-flash');
+const SessionStore      = require('connect-mongo')(session);
+
 
 
 const PORT = process.env.PORT || 3000;
@@ -28,10 +30,17 @@ connection.once('open', () => {
 // Assets
 app.use(express.static('public'));
 
+// Sesion store
+let sessionStore = new SessionStore({
+    mongooseConnection : connection,
+    collection : 'sessions'
+});
+
 // Session config
 app.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: false,
+    store: sessionStore,
     saveUninitialized: false,
     cookie: { maxAge: 100 * 60 * 60 * 24 }
 }));
