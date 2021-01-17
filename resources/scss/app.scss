@@ -43,6 +43,9 @@ section.hero {
         border-color: $pure-dark;
         color: $pure-dark;
     }
+    &:focus {
+        outline: none;
+    }
 }
 
 section.cart {

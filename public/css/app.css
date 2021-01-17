@@ -318,6 +318,9 @@ section.hero {
   border-color: #121212;
   color: #121212;
 }
+.add-to-cart:focus {
+  outline: none;
+}
 
 section.cart {
   background: #232323;
