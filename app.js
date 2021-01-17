@@ -27,8 +27,11 @@ connection.once('open', () => {
 
 // Middlewares
 
+
+
 // Assets
 app.use(express.static('public'));
+app.use(express.json());
 
 // Sesion store
 let sessionStore = new SessionStore({
@@ -44,6 +47,13 @@ app.use(session({
     saveUninitialized: false,
     cookie: { maxAge: 100 * 60 * 60 * 24 }
 }));
+
+// Global middlewares
+app.use((req, res, next) => {
+    res.locals.session = req.session;
+
+    next();
+});
 
 app.use(flash()); 
 

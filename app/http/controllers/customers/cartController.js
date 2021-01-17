@@ -18,9 +18,23 @@ function cartController(){
 
             let cart = req.session.cart;
 
-            
+            console.log(req.body);
+            // check if item exists in the cart or not?
+            if(!cart.items[req.body._id]){
+                cart.items[req.body._id] = {
+                    item: req.body,
+                    qty: 1
+                }
 
-             res.json({ data: "all ok"});
+                cart.totalQty += 1;
+                cart.totalPrice += req.body.price;
+            } else {
+                cart.items[req.body._id].qty = cart.items[req.body._id].qty + 1;
+                cart.totalQty = cart.totalQty + 1;
+                cart.totalPrice = cart.totalPrice + req.body.price;
+            }
+
+             res.json({ totalQty : req.session.cart.totalQty });
         }
     }
 }
