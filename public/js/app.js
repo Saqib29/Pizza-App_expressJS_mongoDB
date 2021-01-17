@@ -1871,7 +1871,6 @@ function updateCart(pizza) {
 
 addToCart.forEach(function (btn) {
   btn.addEventListener('click', function (e) {
-    e.preventDefault();
     var pizza = JSON.parse(btn.dataset.pizza);
     updateCart(pizza); // console.log(pizza);
   });
