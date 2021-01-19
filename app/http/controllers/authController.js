@@ -23,7 +23,15 @@ function authController() {
                  res.redirect('/register');
             } 
             
-            
+            // Check does email exist or not in the database
+            User.exists({ email : email }, (err, result) => {
+                if(result){
+                    req.flash('error', 'Email already exists');
+                    req.flash('name', name);
+                    req.flash('email', email);
+                     res.redirect('/register');
+                }
+            });            
             console.log(req.body);
         }
 
