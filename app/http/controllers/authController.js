@@ -8,6 +8,11 @@ function authController() {
 
         register(req, res) {
             res.render('auth/registration');
+        },
+
+        postController(req, res){
+            const { name, email, password } = req.body;
+            console.log(req.body);
         }
 
     }
