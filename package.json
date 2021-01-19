@@ -29,6 +29,7 @@
   "homepage": "https://github.com/Saqib29/Pizza-App_expressJS_mongoDB#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
     "connect-mongo": "^3.2.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",

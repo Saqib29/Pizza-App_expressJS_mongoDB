@@ -1,4 +1,5 @@
 const User = require('../../models/user');
+const bcrypt = require('bcrypt');
 
 
 function authController() {
@@ -12,7 +13,7 @@ function authController() {
             res.render('auth/registration');
         },
 
-        postController(req, res){
+        async postRegister(req, res){
             const { name, email, password } = req.body;
 
             // validate request
@@ -20,7 +21,7 @@ function authController() {
                 req.flash('error', 'All fields must required');
                 req.flash('name', name);
                 req.flash('email', email);
-                 res.redirect('/register');
+                return res.redirect('/register');
             } 
             
             // Check does email exist or not in the database
@@ -29,9 +30,29 @@ function authController() {
                     req.flash('error', 'Email already exists');
                     req.flash('name', name);
                     req.flash('email', email);
-                     res.redirect('/register');
+                    return res.redirect('/register');
                 }
-            });            
+            });
+
+            // Hash password
+            const hashedPassword = await bcrypt.hash(password, 10);
+
+            // Create new user
+            const user = new User({
+                name,
+                email,
+                password: hashedPassword
+            });
+
+            user.save().then(() => {
+                // Login
+                return  res.redirect('/');
+
+            }).catch(err => {
+                req.flash('error', 'Something went wrong!');
+                return  res.redirect('/register');
+            });
+
             console.log(req.body);
         }
 
