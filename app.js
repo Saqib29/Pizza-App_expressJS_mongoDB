@@ -8,6 +8,7 @@ const mongoose          = require('mongoose');
 const session           = require('express-session');
 const flash             = require('express-flash');
 const SessionStore      = require('connect-mongo')(session);
+const passport          = require('passport');
 
 
 
@@ -27,7 +28,11 @@ connection.once('open', () => {
 
 // Middlewares
 
-
+// Passport config
+const passportInit = require('./app/config/passport');
+passportInit(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Assets
 app.use(express.static('public'));
