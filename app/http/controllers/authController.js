@@ -80,7 +80,14 @@ function authController() {
                 return  res.redirect('/register');
             });
 
-            console.log(req.body);
+            // console.log(req.body);
+        },
+
+        logout(req, res) {
+            //  logout appeared for passport
+            req.logout();
+
+            return res.redirect('/');
         }
 
     }
