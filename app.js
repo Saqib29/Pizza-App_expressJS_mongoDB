@@ -72,6 +72,19 @@ app.set('view engine', 'ejs');
 // fatching web routes
 require('./routes/web')(app);
 
-app.listen(PORT, () => {
+const server =  app.listen(PORT, () => {
     console.log(`Server started at http://localhost:${PORT}`);
+});
+
+
+// Socket.io
+const io = require("socket.io")(server);
+
+io.on('connection', (socket) => {
+    // join
+    // console.log(`socket.id - ${socket.id}`);
+    socket.on('join', (roomName) => {
+        // console.log(`roomName - ${roomName}`);
+        socket.join(roomName);
+    });
 });
