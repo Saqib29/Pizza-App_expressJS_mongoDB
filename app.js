@@ -85,6 +85,7 @@ io.on('connection', (socket) => {
     // console.log(`socket.id - ${socket.id}`);
     socket.on('join', (roomName) => {
         // console.log(`roomName - ${roomName}`);
+        console.log(roomName);
         socket.join(roomName);
     });
 });
