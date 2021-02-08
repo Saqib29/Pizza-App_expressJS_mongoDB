@@ -9,6 +9,7 @@ const session           = require('express-session');
 const flash             = require('express-flash');
 const SessionStore      = require('connect-mongo')(session);
 const passport          = require('passport');
+const Emitter           = require('events');
 
 
 
@@ -39,6 +40,10 @@ let sessionStore = new SessionStore({
     mongooseConnection : connection,
     collection : 'sessions'
 });
+
+// Event emitter
+const eventEmitter = new Emitter();
+app.set('eventEmitter', eventEmitter);
 
 // Session config
 app.use(session({
@@ -85,7 +90,7 @@ io.on('connection', (socket) => {
     // console.log(`socket.id - ${socket.id}`);
     socket.on('join', (roomName) => {
         // console.log(`roomName - ${roomName}`);
-        console.log(roomName);
+        
         socket.join(roomName);
     });
 });
