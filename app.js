@@ -94,3 +94,7 @@ io.on('connection', (socket) => {
         socket.join(roomName);
     });
 });
+
+eventEmitter.on('orderUpdated', (data) => {
+    io.to(`order_${data.id}`).emit('orderUpdated', data);
+})

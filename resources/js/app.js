@@ -54,6 +54,10 @@ let time = document.createElement('small');
 // console.log(statuses);
 
 function updateStatus(order) {
+    statuses.forEach((status) => {
+        status.classList.remove('step-completed');
+        status.classList.remove('current');
+    });
     let stepCompleted = true;
     statuses.forEach((status) => {
         let dataProp = status.dataset.status;
@@ -79,3 +83,16 @@ let socket = io();
 if(order){
     socket.emit('join', `order_${order._id}`);
 }
+
+socket.on('orderUpdated', (data) => {
+    const updatedOrder = { ...order };
+    updatedOrder.updatedAt = moment().format();
+    updatedOrder.status = data.status;
+    updateStatus(updatedOrder);
+    new Noty({
+        type: 'success',
+        timeout: 1000,
+        text: 'Order updated',
+        progressBar: false
+    }).show();
+});
